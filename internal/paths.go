@@ -44,6 +44,9 @@ func CandidateModulePaths(fullPath string) []string {
 	var r []string
 	for p := fullPath; p != "." && p != "/"; p = path.Dir(p) {
 		if err := module.CheckPath(p); err != nil {
+			if p == "do" {
+				r = append(r, p)
+			}
 			continue
 		}
 		r = append(r, p)

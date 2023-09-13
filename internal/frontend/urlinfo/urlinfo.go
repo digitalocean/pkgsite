@@ -170,6 +170,9 @@ func parseStdlibURLPath(urlPath string) (_ *URLPathInfo, err error) {
 
 // IsValidPath reports whether a requested path could be a valid unit.
 func IsValidPath(fullPath string) bool {
+	if strings.HasPrefix(fullPath, "do/") {
+		return true
+	}
 	if err := module.CheckImportPath(fullPath); err != nil {
 		return false
 	}

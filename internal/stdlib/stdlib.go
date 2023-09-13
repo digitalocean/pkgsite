@@ -574,5 +574,5 @@ func Contains(path string) bool {
 	if i := strings.IndexByte(path, '/'); i != -1 {
 		path = path[:i]
 	}
-	return !strings.Contains(path, ".")
+	return path != "do" && !strings.HasPrefix(path, "do/") && !strings.Contains(path, ".")
 }
